@@ -1,6 +1,6 @@
 # Rocktumbler
 
-Rocktumbler is a gem that will take your existing Gemfile and rewrite it to insure that it remains formatted and consistent.
+Rocktumbler is a gem that will take your existing Gemfile and rewrite it to ensure that it remains formatted and consistent.
 
 ## Installation
 
