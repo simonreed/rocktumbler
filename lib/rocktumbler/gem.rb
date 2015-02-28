@@ -13,8 +13,21 @@ module Rocktumbler
       str += "#{prepend}gem '#{@gem_dependency.name}'"
       str += ",'#{@gem_dependency.requirement}'" if @gem_dependency.requirement.specific?
       str += generate_gem_source(@gem_dependency.source.options) if @gem_dependency.source
-      str += ", require: #{!@gem_dependency.autorequire.empty?}" if @gem_dependency.autorequire
+      str += generate_require(@gem_dependency.autorequire) if @gem_dependency.autorequire
       str += "\n\n"
+    end
+
+    private
+
+    def generate_require(autorequire)
+      if autorequire.count > 1
+        # Array.to_s will output double quotes so we gsub them to singles.
+        return ", require: #{autorequire.to_s.gsub(/"/,'\'')}"
+      elsif autorequire.first.is_a?(String)
+        return ", require: '#{autorequire.first}'"
+      else
+        return ", require: #{!autorequire.empty?}"
+      end
     end
 
     def generate_gem_source(source_options)
