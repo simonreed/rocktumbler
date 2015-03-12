@@ -11,7 +11,7 @@ module Rocktumbler
       str = "#{prepend}# #{gem_info.summary}\n"
       str += "#{prepend}# #{gem_info.homepage}\n"
       str += "#{prepend}gem '#{@gem_dependency.name}'"
-      str += ",'#{@gem_dependency.requirement}'" if @gem_dependency.requirement.specific?
+      str += ",'#{@gem_dependency.requirement}'" unless @gem_dependency.requirement.none?
       str += generate_gem_source(@gem_dependency.source.options) if @gem_dependency.source
       str += generate_require(@gem_dependency.autorequire) if @gem_dependency.autorequire
       str += "\n\n"
