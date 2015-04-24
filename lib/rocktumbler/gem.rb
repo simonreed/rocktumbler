@@ -31,8 +31,9 @@ module Rocktumbler
     end
 
     def generate_gem_source(source_options)
-      return ", github: '#{source_options['github']}'" if source_options['github']
-      return ", path: '#{source_options['path']}'" if source_options['path']
+      ['git','github','git_source','source','path','gist','bitbucket'].each do | source_type |
+        return ", #{source_type}: '#{source_options[source_type]}'" if source_options[source_type]
+      end
     end
 
     def retrieve_gem_information(gem_name)
