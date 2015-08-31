@@ -3,6 +3,7 @@ require 'ostruct'
 require 'tempfile'
 require 'bundler'
 
+# Rocktumbler module
 module Rocktumbler
   autoload :Tumbler,       'rocktumbler/tumbler'
   autoload :Group,         'rocktumbler/group'
