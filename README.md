@@ -1,16 +1,17 @@
 # Rocktumbler
 
-[ ![Codeship Status for simonreed/rocktumbler](https://codeship.com/projects/f0992010-34aa-0133-cb4b-0afba22710e8/status?branch=master)](https://codeship.com/projects/100585)
-
 Rocktumbler is a gem that will take your existing Gemfile and rewrite it to ensure that it remains formatted and consistent.
 
-It enforces a style to your Gemfile to make it easy to read and understand your Gemfile.
+It enforces a style to your Gemfile to make it easy to read and understand your Gemfile. Including :
 
-Single quotes.
-Ruby 1.9 hash syntax.
-Space Indentation.
-Sort gems alphabetically.
-Use block form for groups.
+* Single quotes.
+* Ruby 1.9 hash syntax.
+* 2 Space Indentation.
+* Sort gems alphabetically.
+* Organise groups around the block form.
+* Add Gem description and url, making it easier to document what a gem is used for.
+
+It will produce a Gemfile that is compliant with the default config for Rubocop.
 
 ## Example
 
@@ -60,7 +61,7 @@ And then execute:
 
     $ tumble
 
-This will then rewrite your Gemfile making sure that you use single quotes and gives a brief description of what each gem does.
+This will then rewrite your Gemfile giving you a fresh, clean and consistent Gemfile.
 
 ## Development
 
