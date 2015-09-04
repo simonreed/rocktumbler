@@ -1,5 +1,7 @@
 # Rocktumbler
 
+[![Build Status](https://travis-ci.org/simonreed/rocktumbler.svg)](https://travis-ci.org/simonreed/rocktumbler)
+
 Rocktumbler is a gem that will take your existing Gemfile and ensure that it remains formatted and consistent.
 
 It enforces a style to your Gemfile to make it easy to read and understand your Gemfile. Including :
@@ -9,7 +11,7 @@ It enforces a style to your Gemfile to make it easy to read and understand your 
 * 2 Space Indentation.
 * Sort gems alphabetically.
 * Organise groups around the block form.
-* Add Gem description and url, making it easier to document what a gem is used for.
+* Add Gem description and url, making it easier to document what a gem is used for (optional).
 
 It will produce a Gemfile that is compliant with the default config for Rubocop.
 
@@ -62,6 +64,21 @@ And then execute:
     $ tumble
 
 This will then rewrite your Gemfile giving you a fresh, clean and consistent Gemfile.
+
+## CLI Options
+
+```
+Usage: tumble [options]
+
+Specific options:
+    -d, --no-documentation           Don't display gem documentation
+    -s, --skip-write                 Skip writing of Gemfile
+
+Common options:
+    -h, --help                       Show this message
+        --version                    Show version
+```
+
 
 ## Development
 

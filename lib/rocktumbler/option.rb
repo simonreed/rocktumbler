@@ -13,7 +13,7 @@ module Rocktumbler
       options.docs = true
 
       opt_parser = OptionParser.new do |opts|
-        opts.banner = "Usage: example.rb [options]"
+        opts.banner = "Usage: tumble [options]"
 
         opts.separator ""
         opts.separator "Specific options:"
