@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/simonreed/rocktumbler'
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files -z`.split('\x0').reject { |f|
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f|
     f.match(%r{^(test|spec|features)/})
   }
   spec.executables   = %w(tumble)
