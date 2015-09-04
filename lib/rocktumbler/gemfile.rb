@@ -27,7 +27,7 @@ module Rocktumbler
     end
 
     def parse_ruby
-      /^(ruby.*)/.match(@gemfile_contents)[1]
+      /^(ruby.*)/.match(@gemfile_contents)[1] if @gemfile_contents =~ /^(ruby.*)/
     end
 
     def parse_source

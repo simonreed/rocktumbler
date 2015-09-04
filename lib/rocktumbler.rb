@@ -10,5 +10,6 @@ module Rocktumbler
   autoload :GroupFilter,   'rocktumbler/group_filter'
   autoload :Gem,           'rocktumbler/gem'
   autoload :Gemfile,       'rocktumbler/gemfile'
-  autoload :Version,       'rocktumbler/version'
+  autoload :VERSION,       'rocktumbler/version'
+  autoload :Option,        'rocktumbler/option'
 end

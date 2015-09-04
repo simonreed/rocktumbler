@@ -2,8 +2,9 @@ module Rocktumbler
   # The GroupFilter is a class responsible for filtering gems into group
   # and sorting the groups and their gems alphabetically.
   class GroupFilter
-    def initialize(gem_dependencies)
+    def initialize(gem_dependencies, opts)
       @gem_dependencies = gem_dependencies
+      @opts = opts
     end
 
     def filter
@@ -11,7 +12,7 @@ module Rocktumbler
 
       default_gems = gems_by_group.delete([:default])
       default_gems.sort!
-      groups = [Rocktumbler::Group.new(:default, default_gems)]
+      groups = [Rocktumbler::Group.new(:default, default_gems, @opts)]
 
       gems_by_group_sorted = sort_groups(gems_by_group, default_gems)
 
@@ -25,7 +26,7 @@ module Rocktumbler
         gems_unique_to_group = gems - default_gems
         gems_unique_to_group.sort!
         gems_unique_to_group.uniq!
-        arr << Rocktumbler::Group.new(group, gems_unique_to_group)
+        arr << Rocktumbler::Group.new(group, gems_unique_to_group, @opts)
       end
     end
   end

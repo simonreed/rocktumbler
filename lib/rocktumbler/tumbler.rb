@@ -5,17 +5,19 @@ module Rocktumbler
   # and reads, parses, cleans, writes and verifies the new gemfile.
   class Tumbler
     def initialize(location = Bundler.default_gemfile)
+      @opts = {}
       @gemfile_location = location
       @bundler_dependencies = parse_gemfile(@gemfile_location)
       @gemfile = Rocktumbler::Gemfile.new(location)
     end
 
-    def tumble(opts = {})
-      groups = Rocktumbler::GroupFilter.new(@bundler_dependencies).filter
+    def tumble(args = ARGV)
+      @opts = Option.parse(args)
+      groups = Rocktumbler::GroupFilter.new(@bundler_dependencies, @opts).filter
       clean_gemfile_str = @gemfile.print_source_and_ruby
       clean_gemfile_str << groups.map(&:print).join
       compare_to_original_gemfile(clean_gemfile_str)
-      write(clean_gemfile_str) unless opts[:skip_write]
+      write(clean_gemfile_str) unless @opts.skip_write
       clean_gemfile_str
     end
 

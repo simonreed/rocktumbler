@@ -3,8 +3,9 @@ require_relative 'exceptions'
 module Rocktumbler
   # The Gem is a class responsible for handling outputting info on a Rubygem
   class Gem
-    def initialize(gem_dep)
+    def initialize(gem_dep, opts)
       @gem_dep = gem_dep
+      @opts = opts
     end
 
     def print(prepend = '')
@@ -16,8 +17,12 @@ module Rocktumbler
     private
 
     def formatted_line(prepend, gem_info)
-      str = "#{prepend}# #{gem_info.summary.strip}\n"
-      str += format_homepage(gem_info.homepage, prepend)
+      if @opts.docs
+        str = "#{prepend}# #{gem_info.summary.strip}\n"
+        str += format_homepage(gem_info.homepage, prepend)
+      else
+        str = ''
+      end
       str += "#{prepend}gem '#{@gem_dep.name}'"
       str += format_requirement || ''
       str += format_source

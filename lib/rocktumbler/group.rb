@@ -3,9 +3,10 @@ module Rocktumbler
   class Group
     attr_accessor :name
 
-    def initialize(name, gem_dependencies)
+    def initialize(name, gem_dependencies, opts)
       @name = name
-      @gems = gem_dependencies.map { |g| Rocktumbler::Gem.new(g) }
+      @opts = opts
+      @gems = gem_dependencies.map { |g| Rocktumbler::Gem.new(g, @opts) }
     end
 
     def print
