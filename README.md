@@ -98,6 +98,10 @@ group :development do
 end
 ```
 
+## Bundler integration
+
+All generated Gemfiles are parsed and verified against the original Gemfile using Bundler to ensure the Bundler configuration remains unchanged. No need to worry about Gems going missing.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
