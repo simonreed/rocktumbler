@@ -17,12 +17,12 @@ module Rocktumbler
     private
 
     def formatted_line(prepend, gem_info)
-      if @opts.docs
+      if @opts.gem_info
         str = "#{prepend}# #{gem_info.summary.strip}\n"
-        str += format_homepage(gem_info.homepage, prepend)
       else
         str = ''
       end
+      str += format_homepage(gem_info.homepage, prepend) if @opts.gem_homepage
       str += "#{prepend}gem '#{@gem_dep.name}'"
       str += format_requirement || ''
       str += format_source

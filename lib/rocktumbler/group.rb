@@ -10,12 +10,12 @@ module Rocktumbler
     end
 
     def print
-      str = ''
+      str = "\n"
       prepend_spacing = (@name == :default) ? '' : '  '
       if @name != :default
         str += "\ngroup #{@name.to_s.gsub(/[\[\]]/, '')} do\n"
       end
-      str += @gems.map { |g| g.print(prepend_spacing) }.join("\n\n")
+      str += @gems.map { |g| g.print(prepend_spacing) }.join("\n")
       str += "\nend\n" if @name != :default
       str
     end

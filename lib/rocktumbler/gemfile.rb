@@ -21,8 +21,8 @@ module Rocktumbler
 
     def print_source_and_ruby
       str = ''
-      str += "#{@source.tr('\"', '\'')}\n\n" if @source
-      str += "#{@ruby.tr('\"', '\'')}\n\n" if @ruby
+      str += "#{@source.tr('\"', '\'')}\n" if @source
+      str += "\n#{@ruby.tr('\"', '\'')}\n" if @ruby
       str
     end
 

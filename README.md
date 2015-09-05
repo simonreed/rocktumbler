@@ -32,21 +32,11 @@ After
 ```ruby
 source 'https://rubygems.org'
 
-# Pg is the Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]
-# https://bitbucket.org/ged/ruby-pg
 gem 'pg'
-
-# Polish your Gemfile to make sure it remains consistent.
-# https://github.com/simonreed/rocktumbler
 gem 'rocktumbler'
 
 group :development do
-  # An IRB alternative and runtime developer console
-  # http://pryrepl.org
   gem 'pry', require: 'pry'
-
-  # Automatic Ruby code style checking tool.
-  # http://github.com/bbatsov/rubocop
   gem 'rubocop'
 end
 ```
@@ -71,7 +61,8 @@ This will then rewrite your Gemfile giving you a fresh, clean and consistent Gem
 Usage: tumble [options]
 
 Specific options:
-    -d, --no-documentation           Don't display gem documentation
+    -i, --info                       Display gem info comment.
+    -d, --homepage                   Display gem homepage comment.
     -s, --skip-write                 Skip writing of Gemfile
 
 Common options:
@@ -79,6 +70,33 @@ Common options:
         --version                    Show version
 ```
 
+### Gem Info Comments
+
+If you wish to display Gem info within your Gemfile to aid readablility you can specify the `-i` or `--info` option on the CLI. The gem homepage url can be added with the `-d` or `--homepage` option.
+
+`tumble --info --homepage`
+
+will give you :
+
+```ruby
+source 'https://rubygems.org'
+
+# Pg is the Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]
+# https://bitbucket.org/ged/ruby-pg
+gem 'pg'
+# Polish your Gemfile to make sure it remains consistent.
+# https://github.com/simonreed/rocktumbler
+gem 'rocktumbler'
+
+group :development do
+  # An IRB alternative and runtime developer console
+  # http://pryrepl.org
+  gem 'pry', require: 'pry'
+  # Automatic Ruby code style checking tool.
+  # http://github.com/bbatsov/rubocop
+  gem 'rubocop'
+end
+```
 
 ## Development
 

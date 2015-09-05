@@ -4,7 +4,7 @@ describe Rocktumbler::Gem do
   let(:gem_name) { 'bundler' }
   let(:gem_summary) { 'Bundler summary' }
   let(:gem_homepage) { 'bundler.io' }
-  let(:opts) { OpenStruct.new(docs: true) }
+  let(:opts) { OpenStruct.new(gem_info: true, gem_homepage: true) }
   before do
     Bundler.stub_chain(:definition, :specs)
       .and_return([OpenStruct.new(name: gem_name,
