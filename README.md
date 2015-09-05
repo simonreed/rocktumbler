@@ -1,6 +1,6 @@
 # Rocktumbler
 
-[![Build Status](https://travis-ci.org/simonreed/rocktumbler.svg)](https://travis-ci.org/simonreed/rocktumbler)
+[![Build Status](https://travis-ci.org/simonreed/rocktumbler.svg)](https://travis-ci.org/simonreed/rocktumbler) [![Code Climate](https://codeclimate.com/github/simonreed/rocktumbler/badges/gpa.svg)](https://codeclimate.com/github/simonreed/rocktumbler)
 
 Rocktumbler is a gem that will take your existing Gemfile and ensure that it remains formatted and consistent.
 
