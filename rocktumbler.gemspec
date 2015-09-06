@@ -24,4 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('rspec', '~> 3.2.0')
 
   spec.add_runtime_dependency 'bundler', '~> 1.7'
+  spec.add_runtime_dependency 'colorize', '~> 0.7.7'
+  spec.add_runtime_dependency 'rouge', '1.9.0'
 end

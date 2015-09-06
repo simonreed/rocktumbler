@@ -13,6 +13,7 @@ module Rocktumbler
       options.gem_info = false
       options.gem_homepage = false
       options.skip_write = false
+      options.verbose = false
 
       opt_parser = OptionParser.new do |opts|
         opts.banner = "Usage: tumble [options]"
@@ -30,6 +31,10 @@ module Rocktumbler
 
         opts.on("-s", "--skip-write", "Skip writing of Gemfile") do |docs|
           options.skip_write = true
+        end
+
+        opts.on("-l", "--verbose", "Log formatted out to STDERR") do |docs|
+          options.verbose = true
         end
 
         opts.separator ""

@@ -6,7 +6,7 @@ module Rocktumbler
     def initialize(name, gem_dependencies, opts)
       @name = name
       @opts = opts
-      @gems = gem_dependencies.map { |g| Rocktumbler::Gem.new(g, @opts) }
+      @gems = gems_from_dependencies(gem_dependencies)
     end
 
     def print
@@ -18,6 +18,10 @@ module Rocktumbler
       str += @gems.map { |g| g.print(prepend_spacing) }.join("\n")
       str += "\nend\n" if @name != :default
       str
+    end
+
+    def gems_from_dependencies(gem_dependencies)
+      gem_dependencies.map { |g| Rocktumbler::Gem.new(g, @opts) }
     end
   end
 end

@@ -4,4 +4,12 @@
 Signal.trap('INT') { exit 1 }
 
 require 'rocktumbler'
-Rocktumbler::Tumbler.new.tumble
+require 'benchmark'
+
+cli = Rocktumbler::CLI.new
+
+time = Benchmark.realtime do
+  cli.run
+end
+
+puts "Rocktumbler finished in #{time} seconds" if cli.opts.verbose

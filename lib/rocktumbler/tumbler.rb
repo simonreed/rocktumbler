@@ -4,21 +4,44 @@ module Rocktumbler
   # The Tumbler class is responsible for executing the top level tumble method
   # and reads, parses, cleans, writes and verifies the new gemfile.
   class Tumbler
-    def initialize(location = Bundler.default_gemfile)
-      @opts = {}
+
+    def initialize(opts, location = Bundler.default_gemfile)
+      @opts = opts
       @gemfile_location = location
       @bundler_dependencies = parse_gemfile(@gemfile_location)
+      @original_gemfile_str = File.open(@gemfile_location).read
       @gemfile = Rocktumbler::Gemfile.new(location)
     end
 
-    def tumble(args = ARGV)
-      @opts = Option.parse(args)
+    def tumble
       groups = Rocktumbler::GroupFilter.new(@bundler_dependencies, @opts).filter
       clean_gemfile_str = @gemfile.print_source_and_ruby
       clean_gemfile_str << groups.map(&:print).join
-      compare_to_original_gemfile(clean_gemfile_str)
-      write(clean_gemfile_str) unless @opts.skip_write
-      clean_gemfile_str
+      if clean_gemfile_str == @original_gemfile_str
+        print "No changes required to Gemfile\n".colorize(:yellow)
+      else
+        compare_to_original_gemfile(clean_gemfile_str)
+        write(clean_gemfile_str) unless @opts.skip_write
+        print "New Gemfile generated and written to \
+#{@gemfile_location}\n".colorize(:green)
+        verbose_highlight(clean_gemfile_str) if @opts.verbose
+      end
+    end
+
+    private
+
+    def verbose_highlight(source)
+      print "\n"
+      formatter = Rouge::Formatters::Terminal256.new(theme: 'github')
+      lexer = Rouge::Lexers::Ruby.new
+      print formatter.format(lexer.lex(source))
+      print "\n"
+    end
+
+    def write(clean_gemfile_str)
+      gemfile = File.open(@gemfile_location, 'w')
+      gemfile.write(clean_gemfile_str)
+      gemfile.close
     end
 
     def compare_to_original_gemfile(clean_gemfile_str)
@@ -33,14 +56,6 @@ module Rocktumbler
  existing Gemfile. The following gems are missing : #{diff.map(&:name)}."
       end
     end
-
-    def write(clean_gemfile_str)
-      gemfile = File.open(@gemfile_location, 'w')
-      gemfile.write(clean_gemfile_str)
-      gemfile.close
-    end
-
-    private
 
     def write_temp_gemfile(clean_gemfile_str)
       temp_gemfile = Tempfile.new('Gemfile.temp')

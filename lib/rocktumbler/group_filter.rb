@@ -9,7 +9,6 @@ module Rocktumbler
 
     def filter
       gems_by_group = @gem_dependencies.group_by(&:groups)
-
       default_gems = gems_by_group.delete([:default])
       default_gems.sort!
       groups = [Rocktumbler::Group.new(:default, default_gems, @opts)]

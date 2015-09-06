@@ -27,7 +27,6 @@ module Rocktumbler
       str += format_requirement || ''
       str += format_source
       str += format_require(@gem_dep.autorequire)
-      str
     end
 
     def format_requirement
