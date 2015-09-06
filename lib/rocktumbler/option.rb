@@ -33,7 +33,7 @@ module Rocktumbler
           options.skip_write = true
         end
 
-        opts.on("-l", "--verbose", "Log formatted out to STDERR") do |docs|
+        opts.on("-l", "--verbose", "Display formatted output to STDOUT") do |docs|
           options.verbose = true
         end
 

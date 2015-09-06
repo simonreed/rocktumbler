@@ -64,6 +64,7 @@ Specific options:
     -i, --info                       Display gem info comment.
     -d, --homepage                   Display gem homepage comment.
     -s, --skip-write                 Skip writing of Gemfile
+    -l, --verbose                    Display formatted output to STDOUT
 
 Common options:
     -h, --help                       Show this message
