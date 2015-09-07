@@ -10,7 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ['simonpreed@gmail.com']
 
   spec.summary       = 'Polish your Gemfile to make sure it remains consistent.'
-  spec.description   = 'Polish your Gemfile to make sure it remains consistent.'
+  spec.description   = 'Rocktumbler is a gem that will take your existing \
+Gemfile and ensures that it remains formatted and consistent.'
   spec.homepage      = 'https://github.com/simonreed/rocktumbler'
   spec.license       = 'MIT'
 
@@ -21,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency('rspec', '~> 3.2.0')
+  spec.add_development_dependency('rspec', '~> 3.2.0', '>= 3.2.0')
 
   spec.add_runtime_dependency 'bundler', '~> 1.7'
   spec.add_runtime_dependency 'rainbow', '2.0.0'
