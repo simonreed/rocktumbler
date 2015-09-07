@@ -2,7 +2,7 @@ require 'open-uri'
 require 'ostruct'
 require 'tempfile'
 require 'bundler'
-require 'colorize'
+require 'rainbow'
 require 'rouge'
 
 # Rocktumbler module

@@ -18,12 +18,12 @@ module Rocktumbler
       clean_gemfile_str = @gemfile.print_source_and_ruby
       clean_gemfile_str << groups.map(&:print).join
       if clean_gemfile_str == @original_gemfile_str
-        print "No changes required to Gemfile\n".colorize(:yellow)
+        print Rainbow("No changes required to Gemfile\n").yellow
       else
         compare_to_original_gemfile(clean_gemfile_str)
         write(clean_gemfile_str) unless @opts.skip_write
-        print "New Gemfile generated and written to \
-#{@gemfile_location}\n".colorize(:green)
+        print Rainbow("New Gemfile generated and written to \
+#{@gemfile_location}\n").green
         verbose_highlight(clean_gemfile_str) if @opts.verbose
       end
     end
