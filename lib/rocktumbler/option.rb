@@ -21,19 +21,19 @@ module Rocktumbler
         opts.separator ""
         opts.separator "Specific options:"
 
-        opts.on("-i", "--info", "Display gem info comment.") do |docs|
+        opts.on("-i", "--info", "Display gem info comment.") do
           options.gem_info = true
         end
 
-        opts.on("-d", "--homepage", "Display gem homepage comment.") do |docs|
+        opts.on("-d", "--homepage", "Display gem homepage comment.") do
           options.gem_homepage = true
         end
 
-        opts.on("-s", "--skip-write", "Skip writing of Gemfile") do |docs|
+        opts.on("-s", "--skip-write", "Skip writing of Gemfile") do
           options.skip_write = true
         end
 
-        opts.on("-l", "--verbose", "Display formatted output to STDOUT") do |docs|
+        opts.on("-V", "--verbose", "Display formatted output to STDOUT") do
           options.verbose = true
         end
 
