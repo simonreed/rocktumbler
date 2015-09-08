@@ -15,4 +15,9 @@ module Rocktumbler
   autoload :Gemfile,       'rocktumbler/gemfile'
   autoload :VERSION,       'rocktumbler/version'
   autoload :Option,        'rocktumbler/option'
+  autoload :Logging,       'rocktumbler/logging'
+
+  class << self
+    attr_accessor :logger
+  end
 end

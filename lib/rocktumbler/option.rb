@@ -14,6 +14,7 @@ module Rocktumbler
       options.gem_homepage = false
       options.skip_write = false
       options.verbose = false
+      options.log_file = nil
 
       opt_parser = OptionParser.new do |opts|
         opts.banner = "Usage: tumble [options]"
@@ -21,19 +22,23 @@ module Rocktumbler
         opts.separator ""
         opts.separator "Specific options:"
 
-        opts.on("-i", "--info", "Display gem info comment.") do |docs|
+        opts.on("-i", "--info", "Display gem info comment.") do
           options.gem_info = true
         end
 
-        opts.on("-d", "--homepage", "Display gem homepage comment.") do |docs|
+        opts.on("-d", "--homepage", "Display gem homepage comment.") do
           options.gem_homepage = true
         end
 
-        opts.on("-s", "--skip-write", "Skip writing of Gemfile") do |docs|
+        opts.on("-s", "--skip-write", "Skip writing of Gemfile") do
           options.skip_write = true
         end
 
-        opts.on("-l", "--verbose", "Display formatted output to STDOUT") do |docs|
+        opts.on("-l", "--log FILE", "File to redirect output") do
+          options.log_file = file
+        end
+
+        opts.on("-V", "--verbose", "Display formatted output to STDOUT") do
           options.verbose = true
         end
 
