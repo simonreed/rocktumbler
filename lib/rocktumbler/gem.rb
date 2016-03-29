@@ -52,6 +52,9 @@ module Rocktumbler
     def format_source
       return '' unless @gem_dep.source
       source_options = @gem_dep.source.options
+      if source_options['remotes']
+        return ", source: '#{source_options['remotes'].first}'"
+      end
       %w(git github git_source source path gist bitbucket).each do |source_type|
         next unless source_options[source_type]
         return ", #{source_type}: '#{source_options[source_type]}'"
